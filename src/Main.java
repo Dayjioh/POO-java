@@ -13,6 +13,7 @@ public class Main {
         while (hero.getHp() > 0 && ennemi.getHp() > 0) {
             System.out.println("Que souhaitez vous faire ? ");
             System.out.println("1- Attaquer ");
+            System.out.println("2- Pouvoir ");
             int action = sc.nextInt();
 
             switch (action) {
@@ -25,7 +26,13 @@ public class Main {
                     System.out.println(ennemi.getName() + " : " + ennemi.getHp());
 
                     break;
-
+                case 2:
+                    System.out.println(hero.getName() + " utilise " + hero.getPowerName());
+                    ennemi.setHp(ennemi.getHp() - hero.power());
+                    System.out.println(ennemi.getName() + " riposte " + hero.getName());
+                    hero.setHp(hero.getHp() - ennemi.attaquer());
+                    System.out.println(hero.getName() + " : " + hero.getHp());
+                    System.out.println(ennemi.getName() + " : " + ennemi.getHp());
                 default:
                     break;
             }
