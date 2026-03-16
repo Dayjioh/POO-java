@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         Heros hero = new Heros("Arthur", 100, 15, "Revers", 20);
-        Ennemi ennemi = new Ennemi("Orc", 35, 10);
+        Ennemi ennemi = new Ennemi("Orc", 80, 10);
 
         System.out.println(hero.getName() + " vs " + ennemi.getName());
 
@@ -18,9 +18,9 @@ public class Main {
             switch (action) {
                 case 1:
                     System.out.println(hero.getName() + " attaque " + ennemi.getName());
-                    ennemi.setHp(ennemi.getHp() - hero.getAttack());
+                    ennemi.setHp(ennemi.getHp() - hero.attaquer());
                     System.out.println(ennemi.getName() + " riposte " + hero.getName());
-                    hero.setHp(hero.getHp() - ennemi.getAttack());
+                    hero.setHp(hero.getHp() - ennemi.attaquer());
                     System.out.println(hero.getName() + " : " + hero.getHp());
                     System.out.println(ennemi.getName() + " : " + ennemi.getHp());
 
