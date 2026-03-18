@@ -18,22 +18,13 @@ public class Main {
 
             switch (action) {
                 case 1:
-                    System.out.println(hero.getName() + " attaque " + ennemi.getName());
-                    ennemi.setHp(ennemi.getHp() - hero.attaquer());
-                    System.out.println(ennemi.getName() + " riposte " + hero.getName());
-                    hero.setHp(hero.getHp() - ennemi.attaquer());
-                    System.out.println(hero.getName() + " : " + hero.getHp());
-                    System.out.println(ennemi.getName() + " : " + ennemi.getHp());
-
+                    attaquer(hero, ennemi);
                     break;
                 case 2:
-                    System.out.println(hero.getName() + " utilise " + hero.getPowerName());
-                    ennemi.setHp(ennemi.getHp() - hero.power());
-                    System.out.println(ennemi.getName() + " riposte " + hero.getName());
-                    hero.setHp(hero.getHp() - ennemi.attaquer());
-                    System.out.println(hero.getName() + " : " + hero.getHp());
-                    System.out.println(ennemi.getName() + " : " + ennemi.getHp());
+                    utiliserPouvoir(hero, ennemi);
+                    break;
                 default:
+                    System.out.println("Action invalide !");
                     break;
             }
 
@@ -47,4 +38,26 @@ public class Main {
         sc.close();
     }
 
+    private static void attaquer(Heros hero, Ennemi ennemi) {
+        int heroAttack = hero.attaquer();
+        int ennemiAttack = ennemi.attaquer();
+        System.out.println(hero.getName() + " inflige " + heroAttack + " dégâts à " + ennemi.getName());
+        ennemi.setHp(ennemi.getHp() - heroAttack);
+        System.out.println(ennemi.getName() + " riposte et inflige " + ennemiAttack + " dégâts");
+        hero.setHp(hero.getHp() - ennemiAttack);
+        System.out.println(
+                "HP — " + hero.getName() + " : " + hero.getHp() + " | " + ennemi.getName() + " : " + ennemi.getHp());
+    }
+
+    private static void utiliserPouvoir(Heros hero, Ennemi ennemi) {
+        int heroPower = hero.power();
+        int ennemiAttack = ennemi.attaquer();
+        System.out
+                .println(hero.getName() + " utilise " + hero.getPowerName() + " et inflige " + heroPower + " dégâts !");
+        ennemi.setHp(ennemi.getHp() - heroPower);
+        System.out.println(ennemi.getName() + " riposte et inflige " + ennemiAttack + " dégâts");
+        hero.setHp(hero.getHp() - ennemiAttack);
+        System.out.println(
+                "HP — " + hero.getName() + " : " + hero.getHp() + " | " + ennemi.getName() + " : " + ennemi.getHp());
+    }
 }
