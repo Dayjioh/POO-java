@@ -8,13 +8,15 @@ public class Heros extends Personnage {
     // Attributs propres au Héros, inexistants dans Personnage
     private String powerName;
     private int powerDamage;
+    private int powerCount;
 
     // Constructeur : appelle d'abord le constructeur parent via super()
     // puis initialise les attributs spécifiques au Héros
-    public Heros(String name, int hp, int attack, String powerName, int powerDamage) {
+    public Heros(String name, int hp, int attack, String powerName, int powerDamage, int powerCount) {
         super(name, hp, attack);
         this.powerName = powerName;
         this.powerDamage = powerDamage;
+        this.powerCount = 3;
     }
 
     // Getters : seule façon d'accéder aux attributs private depuis l'extérieur
@@ -26,9 +28,17 @@ public class Heros extends Personnage {
         return powerDamage;
     }
 
+    public int getPowerCount() {
+        return powerCount;
+    }
+
     // Setters : seule façon d'écrire aux attributs private depuis l'extérieur
     public void setPowerDamage(int powerDamage) {
         this.powerDamage = powerDamage;
+    }
+
+    public void setPowerCount(int powerCount) {
+        this.powerCount = powerCount;
     }
 
     // POLYMORPHISME : redéfinition de attaquer() spécifique au Héros
