@@ -53,6 +53,12 @@ public abstract class Personnage {
         }
     }
 
+    // Méthode concrète : à le meme comportement peu importe ou on l'apelle
+    public void takeDamage(int damage) {
+
+        this.setHp(this.getHp() - damage);
+    }
+
     // Methode abstraite
     // ABSTRACTION : méthode abstraite → les sous-classes DOIVENT la redéfinir
     // On sait QUE chaque personnage peut attaquer, pas COMMENT il le fait

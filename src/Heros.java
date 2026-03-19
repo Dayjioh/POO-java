@@ -16,7 +16,7 @@ public class Heros extends Personnage {
         super(name, hp, attack);
         this.powerName = powerName;
         this.powerDamage = powerDamage;
-        this.powerCount = 3;
+        this.powerCount = powerCount;
     }
 
     // Getters : seule façon d'accéder aux attributs private depuis l'extérieur
