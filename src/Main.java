@@ -22,7 +22,15 @@ public class Main {
                 System.out.println("Que souhaitez vous faire ? ");
                 System.out.println("1- Attaquer ");
                 System.out.println("2- Pouvoir ");
-                int choix = sc.nextInt();
+                int choix = -1;
+                try {
+
+                    choix = sc.nextInt();
+                    sc.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Veuillez saisir un chiffre ");
+                    sc.nextLine();
+                }
                 Action actionNumber = Action.INVALIDE;
                 for (Action action : Action.values()) {
                     if (action.getAction() == choix) {
