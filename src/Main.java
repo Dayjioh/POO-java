@@ -1,46 +1,56 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        // tableau dynamique add pour ajouter des valeurs et contient aussi d'autres
+        // methodes.
+        ArrayList<Ennemi> ennemis = new ArrayList<>();
+        ennemis.add(new Ennemi("Orc", 80, 10));
+        ennemis.add(new Ennemi("Goblin", 50, 7));
+        ennemis.add(new Ennemi("Dragon", 200, 25));
+
         Scanner sc = new Scanner(System.in);
 
         Heros hero = new Heros("Arthur", 100, 15, "Revers", 20, 3);
-        Ennemi ennemi = new Ennemi("Orc", 80, 10);
 
-        System.out.println(hero.getName() + " vs " + ennemi.getName());
+        for (Ennemi ennemi : ennemis) {
+            System.out.println(hero.getName() + " vs " + ennemi.getName());
 
-        while (hero.getHp() > 0 && ennemi.getHp() > 0) {
-            System.out.println("Que souhaitez vous faire ? ");
-            System.out.println("1- Attaquer ");
-            System.out.println("2- Pouvoir ");
-            int choix = sc.nextInt();
-            Action actionNumber = Action.INVALIDE;
-            for (Action action : Action.values()) {
-                if (action.getAction() == choix) {
-                    actionNumber = action;
+            while (hero.getHp() > 0 && ennemi.getHp() > 0) {
+                System.out.println("Que souhaitez vous faire ? ");
+                System.out.println("1- Attaquer ");
+                System.out.println("2- Pouvoir ");
+                int choix = sc.nextInt();
+                Action actionNumber = Action.INVALIDE;
+                for (Action action : Action.values()) {
+                    if (action.getAction() == choix) {
+                        actionNumber = action;
+                    }
                 }
-            }
-            switch (actionNumber) {
-                case ATTACK:
-                    attack(hero, ennemi);
-                    break;
-                case POWER:
-                    usePower(hero, ennemi);
-                    break;
-                case INVALIDE:
-                    System.out.println("Action invalide !");
-                    break;
-            }
+                switch (actionNumber) {
+                    case ATTACK:
+                        attack(hero, ennemi);
+                        break;
+                    case POWER:
+                        usePower(hero, ennemi);
+                        break;
+                    case INVALIDE:
+                        System.out.println("Action invalide !");
+                        break;
+                }
 
+            }
         }
         if (hero.getHp() > 0) {
             System.out.println(hero.getName() + " a gagné !");
         } else {
-            System.out.println(ennemi.getName() + " a gagné !");
+            System.out.println(hero.getName() + " a perdu !");
         }
 
         sc.close();
+
     }
 
     private static void attack(Heros hero, Ennemi ennemi) {
