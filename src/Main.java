@@ -14,16 +14,21 @@ public class Main {
             System.out.println("Que souhaitez vous faire ? ");
             System.out.println("1- Attaquer ");
             System.out.println("2- Pouvoir ");
-            int action = sc.nextInt();
-
-            switch (action) {
-                case 1:
+            int choix = sc.nextInt();
+            Action actionNumber = Action.INVALIDE;
+            for (Action action : Action.values()) {
+                if (action.getAction() == choix) {
+                    actionNumber = action;
+                }
+            }
+            switch (actionNumber) {
+                case ATTACK:
                     attack(hero, ennemi);
                     break;
-                case 2:
+                case POWER:
                     usePower(hero, ennemi);
                     break;
-                default:
+                case INVALIDE:
                     System.out.println("Action invalide !");
                     break;
             }
