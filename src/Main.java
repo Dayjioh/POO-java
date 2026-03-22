@@ -141,8 +141,14 @@ public class Main {
                     // split sur "| " pour isoler le nom de l'ennemi en fin de ligne
                     String[] parts = line.split("\\| ");
                     String ennemiName = parts[parts.length - 1];
+                    String[] words = line.split(" ");
+                    int hp = Integer.parseInt(words[4]);
+                    int power = Integer.parseInt(words[7]);
+
                     // equals() et non == pour comparer des String en Java
                     if (ennemis.get(i).getName().equals(ennemiName)) {
+                        hero.setHp(hp);
+                        hero.setPowerCount(power);
                         return i;
                     }
                 }
