@@ -4,7 +4,7 @@
 
 public enum Action {
     // Enum constante
-    ATTACK(1), POWER(2), INVALIDE(-1);
+    ATTACK(1), POWER(2), SAVE(3), INVALIDE(-1);
 
     // Field (variable) to store the description text
     private int action;
