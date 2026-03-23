@@ -3,7 +3,7 @@
 // - récupére tous ses attributs et méthodes. 
 // - Ajoute ses propres caractéristiques. 
 
-public class Heros extends Personnage {
+public class Heros extends Personnage implements Fighter {
 
     // Attributs propres au Héros, inexistants dans Personnage
     private String powerName;

@@ -1,4 +1,4 @@
-public class Ennemi extends Personnage {
+public class Ennemi extends Personnage implements Fighter {
 
     // Constructeur : appelle d'abord le constructeur parent via super()
     public Ennemi(String name, int hp, int attack) {

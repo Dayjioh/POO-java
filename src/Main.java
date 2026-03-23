@@ -82,33 +82,32 @@ public class Main {
     }
 
     // Attaque classique : le héros et l'ennemi s'échangent des dégâts
-    private static void attack(Heros hero, Ennemi ennemi) {
-        int heroAttack = hero.attaquer();
-        int ennemiAttack = ennemi.attaquer();
-        System.out.println(hero.getName() + " inflige " + heroAttack + " dégâts à " + ennemi.getName());
-        ennemi.takeDamage(heroAttack);
-        System.out.println(ennemi.getName() + " riposte et inflige " + ennemiAttack + " dégâts");
-        hero.takeDamage(ennemiAttack);
-        System.out.println(
-                "HP — " + hero.getName() + " : " + hero.getHp() + " | " + ennemi.getName() + " : " + ennemi.getHp());
+    private static void attack(Fighter attacker, Fighter target) {
+        int attackerDamage = attacker.attaquer();
+        int targetDamage = target.attaquer();
+        System.out.println(attacker.getName() + " inflige " + attackerDamage + " dégâts à " + target.getName());
+        target.takeDamage(attackerDamage);
+        System.out.println(target.getName() + " riposte et inflige " + targetDamage + " dégâts");
+        attacker.takeDamage(targetDamage);
+        System.out.println("HP — " + attacker.getName() + " : " + attacker.getHp() + " | " + target.getName() + " : "
+                + target.getHp());
     }
 
     // Pouvoir spécial : inflige plus de dégâts mais limité en utilisations
     // L'ennemi riposte même si le pouvoir est épuisé
-    private static void usePower(Heros hero, Ennemi ennemi) {
-        int heroPower = hero.power();
-        int heroPowerCount = hero.getPowerCount();
-        int ennemiAttack = ennemi.attaquer();
-        if (heroPowerCount > 0) {
-            hero.setPowerCount(hero.getPowerCount() - 1);
+    private static void usePower(Heros attacker, Fighter target) {
+        int power = attacker.power();
+        int powerCount = attacker.getPowerCount();
+        int targetDamage = target.attaquer();
+        if (powerCount > 0) {
+            attacker.setPowerCount(attacker.getPowerCount() - 1);
             System.out.println(
-                    hero.getName() + " utilise " + hero.getPowerName() + " et inflige " + heroPower + " dégâts !");
-            ennemi.takeDamage(heroPower);
-            System.out.println(ennemi.getName() + " riposte et inflige " + ennemiAttack + " dégâts");
-            hero.takeDamage(ennemiAttack);
-            System.out.println(
-                    "HP — " + hero.getName() + " : " + hero.getHp() + " | " + ennemi.getName() + " : "
-                            + ennemi.getHp());
+                    attacker.getName() + " utilise " + attacker.getPowerName() + " et inflige " + power + " dégâts !");
+            target.takeDamage(power);
+            System.out.println(target.getName() + " riposte et inflige " + targetDamage + " dégâts");
+            attacker.takeDamage(targetDamage);
+            System.out.println("HP — " + attacker.getName() + " : " + attacker.getHp() + " | " + target.getName()
+                    + " : " + target.getHp());
         } else {
             System.out.println("Out of charge !");
         }
